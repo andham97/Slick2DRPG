@@ -387,17 +387,17 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Lower Land" width="25" height="20" visible="0">
+ <layer name="Lower Land" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA92U0Q3CMAxEU8mZFTZgBEZgBSaIPQrjkEpUdV6dtHyUDyJZVd3G5/NdktK5y+RkgLr0Bxjlj3jMmsxPlfXdXH6Jy5TS9ROa6/fc7lHsMdQ2Gf8/x31q+3vl9T/DXkUdRf3ich6rh6GoUaTt3efIk88Ig/2oxLMhJrF0gMF5FNly6c0/0q+HEc2HOvGduEd4UD+T9pvJlkvkj5Gv6HuvS+S9yOMjHuxr5CPqQ116vmI97qVm5OdzxHjk9dzvReQH30/vnH+z6IVIiwjjVnk8p2NBb/FeGPmKfKP59/wbeW7vfER3x5J/Azz+MF/QBwAA
   </data>
  </layer>
- <layer name="Wall" width="25" height="20" visible="0">
+ <layer name="Wall" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA+3QMQ2AABBD0Q49xGAEnEAwAkbACTgBHXRAQAcYSPqTl9s6HJDcOhd9q2zSSi8DTPTtcjzbo+4ME32nXDLJwvd/zwJKmvpmP6WU/t4Nj0JJ89AHAAA=
   </data>
  </layer>
- <layer name="WallOverlay" width="25" height="20" visible="0">
+ <layer name="WallOverlay" width="25" height="20">
   <properties>
    <property name="walkable" type="bool" value="true"/>
   </properties>
@@ -405,37 +405,37 @@
    H4sIAAAAAAAAA2NgGAXDCSzEI+fBQh07DqLxnyCZm0EdK/CCDir5YxSMglEwCoYTAAC/OFhG0AcAAA==
   </data>
  </layer>
- <layer name="Upper land" width="25" height="20" visible="0">
+ <layer name="Upper land" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA+2PsQ2AMAwEU8Q7MQmwGZs4PwliHIww4mNRkN4nXWN9/A5qKWo2F6664JlYxoT0c1C2hV2TvLsaZUAzJXfLXxzS74r38NvYwbmvTu7Q2t+PcA//Yxlw9Y75R3Yrt8+bJEmSJBnlBNDPeejQBwAA
   </data>
  </layer>
- <layer name="Water" width="25" height="20" visible="0">
+ <layer name="Water" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA2NgGHygm3V42DEKiAOguIDhUTtG7Ri1Y/jbQQom1w5agcFsBwBeSQJD0AcAAA==
   </data>
  </layer>
- <layer name="Bridges" width="25" height="20" visible="0">
+ <layer name="Bridges" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA2NgGFyAj4mBgR+IBZhoZ4ce0Gx9IDagoR2jYBRQG8DyBj8N84gekpmjeWQUjIKhBQCTptL10AcAAA==
   </data>
  </layer>
- <layer name="Waterfall" width="25" height="20" visible="0">
+ <layer name="Waterfall" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA+2NQQ3AIADELiRYGJgeKBkogSkBLOxMXPa5Jv22gFFwR6DQGnWPh+1Gu/Ax2J70FT4W25se4eMKQKI56B7GGPMnHxRwqRHQBwAA
   </data>
  </layer>
- <layer name="Objects" width="25" height="20" visible="0">
+ <layer name="Objects" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA2NgGAWjYGiD+Zy0NX8L1PyTNLani8bmj4JRMAqGNwAAxCQtVdAHAAA=
   </data>
  </layer>
- <layer name="Objects" width="25" height="20" visible="0">
+ <layer name="Objects" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA2NgGAUjEcxjZmCYD8QLmGlnxz6g2fuB+AAN7bgHNPs+ED+goR3/gGb/B5nPQp7+rRwMDNugeBMQbwbiLRxUdSLDKaB5p6H4OBCfAOKTQ9CO+0DzHkDxHSC+C8T3qGzHSAaDLd8juwcXGwYimRBsUvI9sntwsUGgCmh+NRDXQO0hJd8juwcXGwRmAc2eDcRzmPCbhw0guwcXGwCgEJQx0AcAAA==
   </data>
  </layer>
- <layer name="Objects" width="25" height="20" visible="0">
+ <layer name="Objects" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA+2N0Q1AQBQE9+5pApWgV1SCSrg2jgTrSwWbiLxJ5mc/dgDHcZxv0hsw0NF0jYnfM12EjZXfG03Cxsnv6/kv3i0HYKdH0HXLCFS0jrpGw++WdsLGH7gBFBPv59AHAAA=
   </data>
