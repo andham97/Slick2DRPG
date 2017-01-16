@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Atlas1" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
+  <image source="../res/world/terrain_atlas.png" width="1024" height="1024"/>
+  <tile id="33">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="106">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="107">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="128">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="129">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="130">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="133">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="134">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="135">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="137">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="150">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="160">
+   <properties>
+    <property name="teleport" value="data/maps/Test"/>
+    <property name="walkable" type="bool" value="true"/>
+    <property name="x" type="int" value="16"/>
+    <property name="y" type="int" value="5"/>
+   </properties>
+  </tile>
+  <tile id="165">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="166">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="169">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="192">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="196">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="197">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="198">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="199">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="201">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="227">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="228">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="231">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="232">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="259">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="264">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="525">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="526">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="527">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="707">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="708">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="709">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="739">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="740">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="741">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="771">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="772">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="773">
+   <properties>
+    <property name="walkable" type="bool" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Lower Wall" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBRQAzQBMRMBzDxgriMMkuhgR8oA2t1EQ7MZGSDxywLESmiYlYE6aUCRBLXKVLID2R+0tAOZppUdtPYHPkCuHY5A7EQkdgZiAKeOfEfQBwAA
+  </data>
+ </layer>
+ <layer name="Floor" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2SUQ6CMAyGK8JBGHIQBA4CeBHg4taYJYv513aT+ED8k++pbb6lHdE7F6YAXElPbNbP+3rJOEBjcNSRWT8v1V9USt0J77M6vuVMjo65C9yC/lbpRfTMxMwCQ+AYlV7EwqzMJvAIHJXSi9hJT/exL8v+UzNR/GbIneNYKX4z5O4zHN6Ddo3cS6YjxW25sTXWP3CUQ3L/Hb+5R0qeaTa7KNAHAAA=
+  </data>
+ </layer>
+ <layer name="Back Wall" width="25" height="20">
+  <properties>
+   <property name="walkable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgwA8SgTiJAE4mYAYhMBB2LKSBHY1A3ISED6LxQbiZQjtGwSgYBaNgFIwCbAAAw3W+INAHAAA=
+  </data>
+ </layer>
+ <layer name="Objects" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBSMgsEDuuhgxyo62HGKDnbQGmQxMjBkA3EOI4Q/AUhPZKSO2ZOg5nQB6W4g7oHyNwDpjVSyYxPUnFVAejUQr4HyLwDpi1SyYzABAKjSFWLQBwAA
+  </data>
+ </layer>
+</map>
