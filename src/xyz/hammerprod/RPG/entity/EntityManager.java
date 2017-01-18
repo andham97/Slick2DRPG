@@ -82,4 +82,8 @@ public class EntityManager {
             }
         }
     }
+
+    public EntityPlayer getPlayer(){
+        return this.playerRef;
+    }
 }

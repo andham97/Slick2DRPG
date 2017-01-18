@@ -22,7 +22,6 @@ public class MapManager {
             Map m = new Map(name);
             name = name.split(".tmx")[0];
             maps.put(name, m);
-            System.out.println(name);
         }
     }
 
@@ -48,5 +47,9 @@ public class MapManager {
 
     public String getTileProperty(int id, String property){
         return maps.get(currentMap).getTileProperty(id, property);
+    }
+
+    public String getObjectProperty(int x, int y, String property){
+        return maps.get(currentMap).getObjectProperty(x, y, property);
     }
 }

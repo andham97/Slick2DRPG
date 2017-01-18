@@ -5,9 +5,19 @@ package xyz.hammerprod.RPG.item;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import xyz.hammerprod.RPG.Main;
 
-public class Item {
-    public static Item GOLD = new Item("Gold", 0.005f, Integer.MAX_VALUE, "gold.png");
+public abstract class Item {
+    public static String itemPath = new String("data/res/items/");
+    public static Item GOLD = new ItemGold("Gold", 0.005f, Integer.MAX_VALUE, "gold.png");
+
+    public static Item getItemFromString(String name){
+        switch(name){
+            case "GOLD":
+                return Item.GOLD;
+        }
+        return null;
+    }
 
     private String name;
     private float weight;
@@ -20,7 +30,7 @@ public class Item {
         this.weight = weight;
         this.maxStackSize = maxStackSize;
         try {
-            this.texture = new Image(texturePath);
+            this.texture = new Image(Item.itemPath + texturePath);
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -31,7 +41,7 @@ public class Item {
         this.weight = weight;
         this.stackable = stackable;
         try {
-            this.texture = new Image(texturePath);
+            this.texture = new Image(Item.itemPath + texturePath);
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -41,13 +51,29 @@ public class Item {
         this.name = name;
         this.weight = weight;
         try {
-            this.texture = new Image(texturePath);
+            this.texture = new Image(Item.itemPath + texturePath);
         } catch (SlickException e) {
             e.printStackTrace();
         }
     }
 
     public void render(int x, int y){
-        this.texture.draw(x, y);
+        this.texture.draw(x + ((Main.TILE_SIZE - this.texture.getWidth()) / 2), y + ((Main.TILE_SIZE - this.texture.getHeight()) / 2));
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public boolean isStackable() {
+        return stackable;
+    }
+
+    public int getMaxStackSize() {
+        return maxStackSize;
     }
 }

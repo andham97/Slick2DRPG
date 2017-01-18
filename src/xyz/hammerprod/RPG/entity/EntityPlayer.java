@@ -7,6 +7,11 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SpriteSheet;
 import xyz.hammerprod.RPG.GameManager;
+import xyz.hammerprod.RPG.gui.GUIInventory;
+import xyz.hammerprod.RPG.inventory.Inventory;
+import xyz.hammerprod.RPG.item.Item;
+import xyz.hammerprod.RPG.item.ItemGold;
+import xyz.hammerprod.RPG.item.ItemStack;
 import xyz.hammerprod.RPG.util.Animation;
 
 import org.newdawn.slick.SlickException;
@@ -16,14 +21,21 @@ import xyz.hammerprod.RPG.util.WorldPos;
 public class EntityPlayer extends Entity {
 
     private TimingState teleportState;
+    private TimingState guiState;
     public static EntityPlayer instance;
+    private Inventory inventory;
+    private Inventory activeBar;
 
     public EntityPlayer(){
         this.pos = new WorldPos();
+        this.inventory = new Inventory(9, 3);
+        this.activeBar = new Inventory(9, 1);
+        this.inventory.addItem(new ItemStack(Item.GOLD, 20));
         this.pos.setX(5);
         this.pos.setY(7);
         this.tState = new TimingState(320);
         this.teleportState = new TimingState(400);
+        this.guiState = new TimingState(300);
         try {
             this.animation[0] = new Animation(new SpriteSheet("data/res/entity/player_idle.png", 32, 32), 80);
             this.animation[1] = new Animation(new SpriteSheet("data/res/entity/player_right.png", 32, 32), 80);
@@ -96,6 +108,7 @@ public class EntityPlayer extends Entity {
     public void update(GameContainer container, float delta){
         Input i = container.getInput();
         this.teleportState.tick(delta);
+        this.guiState.tick(delta);
         if(this.getTimingState().finished()) {
             this.moving = false;
         }
@@ -148,6 +161,9 @@ public class EntityPlayer extends Entity {
             p.translate(dx, dy);
             GameManager.interactWithEntityAtPosition(p);
         }
+        if(i.isKeyDown(Input.KEY_I) && this.guiState.finished()){
+            GameManager.registerGUI(new GUIInventory(this.inventory));
+        }
     }
 
     @Override
@@ -174,5 +190,9 @@ public class EntityPlayer extends Entity {
         }
         else
             this.animation[this.state].draw(pos);
+    }
+
+    public Inventory getActiveBar() {
+        return this.activeBar;
     }
 }

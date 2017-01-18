@@ -10,14 +10,26 @@ import xyz.hammerprod.RPG.entity.Entity;
 import xyz.hammerprod.RPG.entity.EntityCreator;
 import xyz.hammerprod.RPG.entity.EntityManager;
 import xyz.hammerprod.RPG.entity.EntityPlayer;
+import xyz.hammerprod.RPG.gui.GUI;
+import xyz.hammerprod.RPG.gui.GUIManager;
+import xyz.hammerprod.RPG.inventory.Inventory;
 import xyz.hammerprod.RPG.map.MapManager;
 import xyz.hammerprod.RPG.util.WorldPos;
 
 public class GameManager {
     private static GameManager instance;
     private static EntityManager entityManager;
+    private static GUIManager guiManager;
 
     private MapManager mapMgr;
+
+    public static void registerGUI(GUI g){
+        instance.guiManager.activateGUI(g);
+    }
+
+    public static void revokeGUI(){
+        instance.guiManager.revoke();
+    }
 
     public static int getTileID(int x, int y, int layer){
         return instance.mapMgr.getTileID(x, y, layer);
@@ -52,6 +64,7 @@ public class GameManager {
     public GameManager(GameContainer container){
         mapMgr = new MapManager();
         entityManager = new EntityManager();
+        guiManager = new GUIManager();
         loadMap("data/maps/Test");
         instance = this;
     }
@@ -66,24 +79,34 @@ public class GameManager {
             for(int y = 0; y < Main.HEIGHT / Main.TILE_SIZE; y++){
                 int id = mapMgr.getTileID(x, y, i);
                 if(id != 0){
-                    System.out.println("X: " + x + " Y: " + y + " TYPE: " + mapMgr.getTileProperty(id, "type"));
                     String type = mapMgr.getTileProperty(id, "type");
                     String color = mapMgr.getTileProperty(id, "color");
+                    String invStr = mapMgr.getObjectProperty(x, y, "inventory");
                     if(mapMgr.getTileProperty(id, "static").equals("false"))
-                        entityManager.registerDynamicEntity(EntityCreator.createEntity(type, color, x, y));
+                        entityManager.registerDynamicEntity(EntityCreator.createEntity(type, color, invStr, x, y));
                     else
-                        entityManager.registerStaticEntity(EntityCreator.createEntity(type, color, x, y));
+                        entityManager.registerStaticEntity(EntityCreator.createEntity(type, color, invStr, x, y));
                 }
             }
         }
     }
 
     public void update(GameContainer container, float delta){
-        entityManager.update(container, delta);
+        if(this.guiManager.isVisible()){
+            this.guiManager.update(container, delta);
+        }
+        else {
+            this.entityManager.update(container, delta);
+        }
     }
 
     public void render(GameContainer container, Graphics g){
         mapMgr.render();
         entityManager.render();
+        this.guiManager.render();
+    }
+
+    public static Inventory getActiveBar() {
+        return entityManager.getPlayer().getActiveBar();
     }
 }

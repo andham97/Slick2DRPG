@@ -7,6 +7,11 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import xyz.hammerprod.RPG.GameManager;
+import xyz.hammerprod.RPG.gui.GUIInventory;
+import xyz.hammerprod.RPG.inventory.Inventory;
+import xyz.hammerprod.RPG.item.Item;
+import xyz.hammerprod.RPG.item.ItemStack;
 import xyz.hammerprod.RPG.util.Animation;
 import xyz.hammerprod.RPG.util.TimingState;
 import xyz.hammerprod.RPG.util.WorldPos;
@@ -16,16 +21,20 @@ public class EntityChest extends Entity {
     public static final int CHEST_CLOSED = 0;
     public static final int CHEST_OPENING = 1;
     public static final int CHEST_OPEN = 2;
+    private int lastStaticState;
 
     private boolean opening = false;
     private boolean closing = false;
     private TimingState animState;
+    private Inventory inventory;
 
-    public EntityChest(int x, int y, String color){
+    public EntityChest(int x, int y, String color, String inventoryString){
         this.pos = new WorldPos(x, y);
         this.tState = new TimingState(260);
         this.animState = new TimingState(20);
         this.state = CHEST_CLOSED;
+        this.lastStaticState = CHEST_CLOSED;
+        this.inventory = new Inventory(9, 3);
         String filename = "chest_" + color;
         try {
             this.animation[0] = new Animation(new Image[]{new Image("data/res/entity/" + filename + "_closed.png")}, new int[]{100}, false);
@@ -34,6 +43,14 @@ public class EntityChest extends Entity {
         }
         catch(SlickException e){
             e.printStackTrace();
+        }
+        if(!inventoryString.equals("")){
+            String[] ss = inventoryString.split("; ");
+            for(String s : ss){
+                String[] sss = s.split(":");
+                System.out.println(inventoryString);
+                this.inventory.addItem(new ItemStack(Item.getItemFromString(sss[0]), Integer.parseInt(sss[1])));
+            }
         }
     }
 
@@ -70,6 +87,10 @@ public class EntityChest extends Entity {
         }
         else if(!this.isOpening() && !this.isClosing()){
             this.animState.tick(delta);
+            if(this.state != this.lastStaticState){
+                this.lastStaticState = this.state;
+                GameManager.registerGUI(new GUIInventory(this.inventory));
+            }
         }
     }
 
@@ -81,14 +102,17 @@ public class EntityChest extends Entity {
             return;
         if(this.state == CHEST_CLOSED){
             this.opening = true;
+            this.lastStaticState = this.state;
             this.state = CHEST_OPENING;
             this.tState.restart();
             this.animation[1].restart();
             this.animation[1].setCurrentFrame(0);
             this.animation[1].setSpeed(1.0f);
+            this.lastStaticState = this.state;
         }
         else if(this.state == CHEST_OPEN){
             this.closing = true;
+            this.lastStaticState = this.state;
             this.state = CHEST_OPENING;
             this.tState.restart();
             this.animation[1].restart();

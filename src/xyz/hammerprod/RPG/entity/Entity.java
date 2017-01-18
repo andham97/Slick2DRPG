@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import xyz.hammerprod.RPG.inventory.Inventory;
 import xyz.hammerprod.RPG.util.Animation;
 import xyz.hammerprod.RPG.util.TimingState;
 import xyz.hammerprod.RPG.util.WorldPos;
