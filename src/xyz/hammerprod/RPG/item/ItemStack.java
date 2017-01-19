@@ -50,7 +50,7 @@ public class ItemStack {
     }
 
     public boolean merge(ItemStack stack){
-        if(this.item == stack.getItem()){
+        if(stack != null && this.item == stack.getItem()){
             int toMuch = this.addItems(stack.getStackSize());
             stack.setStackSize(toMuch);
             return true;

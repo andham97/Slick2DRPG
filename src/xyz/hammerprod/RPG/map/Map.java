@@ -55,7 +55,6 @@ public class Map {
                 int rx = Integer.parseInt(map.getObjectProperty(i, j, "x", "-1"));
                 int ry = Integer.parseInt(map.getObjectProperty(i, j, "y", "-1"));
                 if(x == rx && y == ry){
-                    System.out.println(rx + " " + ry);
                     return map.getObjectProperty(i, j, property, "");
                 }
             }

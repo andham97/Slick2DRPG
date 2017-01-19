@@ -8,9 +8,11 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import xyz.hammerprod.RPG.GameManager;
+import xyz.hammerprod.RPG.gui.GUIChest;
 import xyz.hammerprod.RPG.gui.GUIInventory;
 import xyz.hammerprod.RPG.inventory.Inventory;
 import xyz.hammerprod.RPG.item.Item;
+import xyz.hammerprod.RPG.item.ItemGold;
 import xyz.hammerprod.RPG.item.ItemStack;
 import xyz.hammerprod.RPG.util.Animation;
 import xyz.hammerprod.RPG.util.TimingState;
@@ -30,7 +32,7 @@ public class EntityChest extends Entity {
 
     public EntityChest(int x, int y, String color, String inventoryString){
         this.pos = new WorldPos(x, y);
-        this.tState = new TimingState(260);
+        this.tState = new TimingState(500);
         this.animState = new TimingState(20);
         this.state = CHEST_CLOSED;
         this.lastStaticState = CHEST_CLOSED;
@@ -82,6 +84,7 @@ public class EntityChest extends Entity {
             this.tState.tick(delta);
             if(this.tState.finished()){
                 this.state = CHEST_CLOSED;
+                this.lastStaticState = this.state;
                 this.closing = false;
             }
         }
@@ -89,7 +92,7 @@ public class EntityChest extends Entity {
             this.animState.tick(delta);
             if(this.state != this.lastStaticState){
                 this.lastStaticState = this.state;
-                GameManager.registerGUI(new GUIInventory(this.inventory));
+                GameManager.registerGUI(new GUIChest(this.inventory), this.pos);
             }
         }
     }
@@ -108,7 +111,6 @@ public class EntityChest extends Entity {
             this.animation[1].restart();
             this.animation[1].setCurrentFrame(0);
             this.animation[1].setSpeed(1.0f);
-            this.lastStaticState = this.state;
         }
         else if(this.state == CHEST_OPEN){
             this.closing = true;
@@ -124,5 +126,16 @@ public class EntityChest extends Entity {
     @Override
     public boolean isStatic() {
         return true;
+    }
+
+    @Override
+    public void GUIRevoked() {
+        this.closing = true;
+        this.lastStaticState = this.state;
+        this.tState.restart();
+        this.state = CHEST_OPENING;
+        this.animation[1].restart();
+        this.animation[1].setCurrentFrame(1);
+        this.animation[1].setSpeed(-1.0f);
     }
 }

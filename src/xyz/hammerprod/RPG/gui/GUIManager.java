@@ -3,23 +3,27 @@
  */
 package xyz.hammerprod.RPG.gui;
 
-import jdk.nashorn.internal.runtime.Timing;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
+import xyz.hammerprod.RPG.GameManager;
 import xyz.hammerprod.RPG.util.TimingState;
+import xyz.hammerprod.RPG.util.WorldPos;
 
 public class GUIManager {
     private boolean visible;
+    private boolean startup = true;
     private GUI currentGUI;
+    private WorldPos currentGUIPosition;
     private TimingState tState;
 
     public GUIManager(){
         this.tState = new TimingState(200);
     }
 
-    public void activateGUI(GUI g){
+    public void activateGUI(GUI g, WorldPos p){
         this.visible = true;
         this.currentGUI = g;
+        this.currentGUIPosition = p;
     }
 
     public boolean isVisible() {
@@ -49,5 +53,8 @@ public class GUIManager {
             return;
         this.visible = false;
         this.currentGUI = null;
+        if(this.currentGUIPosition != WorldPos.NONE){
+            GameManager.revokeEntityGUIAtPosition(this.currentGUIPosition);
+        }
     }
 }

@@ -4,6 +4,8 @@
 package xyz.hammerprod.RPG.util;
 
 public class WorldPos {
+    public static WorldPos NONE = new WorldPos(-1, -1);
+
     private float x, y, lx, ly;
 
     public WorldPos(){

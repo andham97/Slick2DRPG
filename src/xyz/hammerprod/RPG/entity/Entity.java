@@ -55,6 +55,8 @@ public abstract class Entity {
 
     public abstract boolean isStatic();
 
+    public abstract void GUIRevoked();
+
     public void render(){
         this.animation[this.state].draw(pos);
     }

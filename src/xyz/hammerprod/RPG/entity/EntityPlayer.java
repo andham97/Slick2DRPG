@@ -46,6 +46,9 @@ public class EntityPlayer extends Entity {
         catch(SlickException e){
             e.printStackTrace();
         }
+        for(int i = 0; i < 5; i++){
+            this.activeBar.addItem(new ItemStack(new ItemGold("", 0, 20, "gold.png"), 10));
+        }
         EntityPlayer.instance = this;
     }
 
@@ -162,7 +165,7 @@ public class EntityPlayer extends Entity {
             GameManager.interactWithEntityAtPosition(p);
         }
         if(i.isKeyDown(Input.KEY_I) && this.guiState.finished()){
-            GameManager.registerGUI(new GUIInventory(this.inventory));
+            GameManager.registerGUI(new GUIInventory(this.inventory), WorldPos.NONE);
         }
     }
 
@@ -174,6 +177,11 @@ public class EntityPlayer extends Entity {
     @Override
     public boolean isStatic(){
         return false;
+    }
+
+    @Override
+    public void GUIRevoked() {
+
     }
 
     public void render(){
@@ -194,5 +202,9 @@ public class EntityPlayer extends Entity {
 
     public Inventory getActiveBar() {
         return this.activeBar;
+    }
+
+    public Inventory getInventory(){
+        return this.inventory;
     }
 }

@@ -41,41 +41,36 @@ public class GUIInventory extends GUI {
     @Override
     public void update(GameContainer container, float delta) {
         Input i = container.getInput();
-        if(i.isKeyDown(Input.KEY_I)){
-            GameManager.revokeGUI();
+        if (i.isKeyPressed(Input.KEY_UP) || i.isKeyDown(Input.KEY_W)) {
+            this.moveCursor(0, -1);
         }
-        else {
-            if (i.isKeyPressed(Input.KEY_UP) || i.isKeyDown(Input.KEY_W)) {
-                this.moveCursor(0, -1);
+        if (i.isKeyPressed(Input.KEY_RIGHT) || i.isKeyDown(Input.KEY_D)) {
+            this.moveCursor(1, 0);
+        }
+        if (i.isKeyPressed(Input.KEY_DOWN) || i.isKeyDown(Input.KEY_S)) {
+            this.moveCursor(0, 1);
+        }
+        if (i.isKeyPressed(Input.KEY_LEFT) || i.isKeyDown(Input.KEY_A)) {
+            this.moveCursor(-1, 0);
+        }
+        if(i.isKeyPressed(Input.KEY_SPACE)){
+            if(i.isKeyDown(Input.KEY_LSHIFT) || i.isKeyDown(Input.KEY_RSHIFT)){
+                appendItem();
             }
-            if (i.isKeyPressed(Input.KEY_RIGHT) || i.isKeyDown(Input.KEY_D)) {
-                this.moveCursor(1, 0);
-            }
-            if (i.isKeyPressed(Input.KEY_DOWN) || i.isKeyDown(Input.KEY_S)) {
-                this.moveCursor(0, 1);
-            }
-            if (i.isKeyPressed(Input.KEY_LEFT) || i.isKeyDown(Input.KEY_A)) {
-                this.moveCursor(-1, 0);
-            }
-            if(i.isKeyPressed(Input.KEY_SPACE)){
-                if(i.isKeyDown(Input.KEY_LSHIFT) || i.isKeyDown(Input.KEY_RSHIFT)){
-                    appendItem();
-                }
-                else {
-                    if (!this.selected) {
-                        this.selectX = this.slotX;
-                        this.selectY = this.slotY;
-                        this.selected = true;
-                    } else {
-                        this.moveItem();
-                    }
+            else {
+                if (!this.selected) {
+                    this.selectX = this.slotX;
+                    this.selectY = this.slotY;
+                    this.selected = true;
+                } else {
+                    this.moveItem();
                 }
             }
         }
     }
 
     private void appendItem(){
-        if(this.slotY < this.bar.getItems()[this.slotX].length + this.inv.getItems()[this.slotX].length - 1) {
+        if(this.slotY < this.inv.getItems()[this.slotX].length) {
             this.bar.addItem(this.inv.getItem(this.slotX, this.slotY));
             this.inv.setItem(null, this.slotX, this.slotY);
         }

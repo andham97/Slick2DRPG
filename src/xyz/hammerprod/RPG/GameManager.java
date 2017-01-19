@@ -23,8 +23,8 @@ public class GameManager {
 
     private MapManager mapMgr;
 
-    public static void registerGUI(GUI g){
-        instance.guiManager.activateGUI(g);
+    public static void registerGUI(GUI g, WorldPos p){
+        instance.guiManager.activateGUI(g, p);
     }
 
     public static void revokeGUI(){
@@ -108,5 +108,13 @@ public class GameManager {
 
     public static Inventory getActiveBar() {
         return entityManager.getPlayer().getActiveBar();
+    }
+
+    public static Inventory getInventory(){
+        return entityManager.getPlayer().getInventory();
+    }
+
+    public static void revokeEntityGUIAtPosition(WorldPos p){
+        instance.entityManager.revokeEntityGUIAtPosition(p);
     }
 }

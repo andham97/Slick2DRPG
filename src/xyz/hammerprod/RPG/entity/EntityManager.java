@@ -86,4 +86,19 @@ public class EntityManager {
     public EntityPlayer getPlayer(){
         return this.playerRef;
     }
+
+    public void revokeEntityGUIAtPosition(WorldPos p) {
+        for(Entity e : staticEntities){
+            if(e.pos.compareTo(p)){
+                e.GUIRevoked();
+                return;
+            }
+        }
+        for(Entity e : dynamicEntities){
+            if(e.pos.compareTo(p)){
+                e.GUIRevoked();
+                return;
+            }
+        }
+    }
 }
