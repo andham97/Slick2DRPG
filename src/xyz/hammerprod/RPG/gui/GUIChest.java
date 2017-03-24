@@ -3,10 +3,7 @@
  */
 package xyz.hammerprod.RPG.gui;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import xyz.hammerprod.RPG.GameManager;
 import xyz.hammerprod.RPG.Main;
 import xyz.hammerprod.RPG.inventory.Inventory;
@@ -99,12 +96,12 @@ public class GUIChest extends GUI {
             if(this.slotY < this.inv.getItems()[this.slotX].length) {
                 System.out.println("INV INV");
                 ItemStack cur = this.inv.getItem(this.slotX, this.slotY);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.inv.setItem(cur, this.selectX, this.selectY);
-                    this.inv.setItem(sel, this.slotX, this.slotY);
+                    this.inv.setItem(sel, this.selectX, this.selectY);
+                    this.inv.setItem(cur, this.slotX, this.slotY);
                 }
                 else {
                     this.inv.setItem(cur, this.selectX, this.selectY);
@@ -115,12 +112,12 @@ public class GUIChest extends GUI {
             else if(this.slotY < this.pinv.getItems()[this.slotX].length + this.inv.getItems()[slotX].length){
                 System.out.println("INV PINV");
                 ItemStack cur = this.pinv.getItem(this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.inv.setItem(cur, this.selectX, this.selectY);
-                    this.pinv.setItem(sel, this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
+                    this.inv.setItem(sel, this.selectX, this.selectY);
+                    this.pinv.setItem(cur, this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
                 }
                 else {
                     this.inv.setItem(cur, this.selectX, this.selectY);
@@ -131,12 +128,12 @@ public class GUIChest extends GUI {
             else {
                 System.out.println("INV BAR");
                 ItemStack cur = this.bar.getItem(this.slotX, 0);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.inv.setItem(cur, this.selectX, this.selectY);
-                    this.bar.setItem(sel, this.slotX, 0);
+                    this.inv.setItem(sel, this.selectX, this.selectY);
+                    this.bar.setItem(cur, this.slotX, 0);
                 }
                 else {
                     this.inv.setItem(cur, this.selectX, this.selectY);
@@ -151,12 +148,12 @@ public class GUIChest extends GUI {
             if(this.slotY < this.inv.getItems()[this.slotX].length) {
                 System.out.println("PINV INV");
                 ItemStack cur = this.inv.getItem(this.slotX, this.slotY);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.pinv.setItem(cur, this.selectX, this.selectY - this.inv.getItems()[this.slotX].length);
-                    this.inv.setItem(sel, this.slotX, this.slotY);
+                    this.pinv.setItem(sel, this.selectX, this.selectY - this.inv.getItems()[this.slotX].length);
+                    this.inv.setItem(cur, this.slotX, this.slotY);
                 }
                 else {
                     this.pinv.setItem(cur, this.selectX, this.selectY - this.inv.getItems()[this.slotX].length);
@@ -167,12 +164,12 @@ public class GUIChest extends GUI {
             else if(this.slotY < this.pinv.getItems()[this.slotX].length + this.inv.getItems()[slotX].length){
                 System.out.println("PINV PINV");
                 ItemStack cur = this.pinv.getItem(this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.pinv.setItem(cur, this.selectX, this.selectY - this.inv.getItems()[this.slotX].length);
-                    this.pinv.setItem(sel, this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
+                    this.pinv.setItem(sel, this.selectX, this.selectY - this.inv.getItems()[this.slotX].length);
+                    this.pinv.setItem(cur, this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
                 }
                 else {
                     this.pinv.setItem(cur, this.selectX, this.selectY - this.inv.getItems()[this.slotX].length);
@@ -183,12 +180,12 @@ public class GUIChest extends GUI {
             else {
                 System.out.println("PINV BAR");
                 ItemStack cur = this.bar.getItem(this.slotX, 0);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.bar.setItem(sel, this.slotX, 0);
-                    this.pinv.setItem(cur, this.selectX, this.selectY - this.inv.getItems()[this.slotX].length);
+                    this.bar.setItem(cur, this.slotX, 0);
+                    this.pinv.setItem(sel, this.selectX, this.selectY - this.inv.getItems()[this.slotX].length);
                 }
                 else {
                     this.bar.setItem(sel, this.slotX, 0);
@@ -203,12 +200,12 @@ public class GUIChest extends GUI {
             if(this.slotY < this.inv.getItems()[this.slotX].length) {
                 System.out.println("BAR INV");
                 ItemStack cur = this.inv.getItem(this.slotX, this.slotY);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.bar.setItem(cur, this.selectX, 0);
-                    this.inv.setItem(sel, this.slotX, this.slotY);
+                    this.bar.setItem(sel, this.selectX, 0);
+                    this.inv.setItem(cur, this.slotX, this.slotY);
                 }
                 else {
                     this.bar.setItem(cur, this.selectX, 0);
@@ -219,12 +216,12 @@ public class GUIChest extends GUI {
             else if(this.slotY < this.pinv.getItems()[this.slotX].length + this.inv.getItems()[slotX].length){
                 System.out.println("BAR PINV");
                 ItemStack cur = this.pinv.getItem(this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.bar.setItem(cur, this.selectX, 0);
-                    this.pinv.setItem(sel, this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
+                    this.bar.setItem(sel, this.selectX, 0);
+                    this.pinv.setItem(cur, this.slotX, this.slotY - this.inv.getItems()[this.slotX].length);
                 }
                 else {
                     this.bar.setItem(cur, this.selectX, 0);
@@ -235,12 +232,12 @@ public class GUIChest extends GUI {
             else {
                 System.out.println("BAR BAR");
                 ItemStack cur = this.bar.getItem(this.slotX, 0);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.bar.setItem(sel, this.slotX, 0);
-                    this.bar.setItem(cur, this.selectX, 0);
+                    this.bar.setItem(cur, this.slotX, 0);
+                    this.bar.setItem(sel, this.selectX, 0);
                 }
                 else {
                     this.bar.setItem(sel, this.slotX, 0);
@@ -267,7 +264,7 @@ public class GUIChest extends GUI {
     }
 
     @Override
-    public void render() {
+    public void render(Graphics g) {
         int dx = Main.WIDTH / 2;
         dx -= this.texture.getWidth() / 2;
         int dy = Main.HEIGHT / 2;
@@ -277,7 +274,7 @@ public class GUIChest extends GUI {
             for(int y = 0; y < this.inv.getItems()[x].length; y++){
                 ItemStack i = this.inv.getItem(x, y);
                 if(i != null){
-                    i.render(xOffset + (x * 5) + dx + (x * Main.TILE_SIZE), yOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
+                    i.render(g, xOffset + (x * 5) + dx + (x * Main.TILE_SIZE), yOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
                 }
                 if(x == this.slotX && y == this.slotY){
                     this.selTex.draw(xOffset + (x * 5) + dx + (x * Main.TILE_SIZE), yOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
@@ -288,7 +285,7 @@ public class GUIChest extends GUI {
             for(int y = 0; y < this.pinv.getItems()[x].length; y++){
                 ItemStack i = this.pinv.getItem(x, y);
                 if(i != null){
-                    i.render(lxOffset + (x * 4) + dx + (x * Main.TILE_SIZE), lyOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
+                    i.render(g, lxOffset + (x * 4) + dx + (x * Main.TILE_SIZE), lyOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
                 }
                 if(x == this.slotX && y + this.inv.getItems()[x].length == this.slotY){
                     this.selTex.draw(lxOffset + (x * 4) + dx + (x * Main.TILE_SIZE), lyOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
@@ -299,7 +296,7 @@ public class GUIChest extends GUI {
             int y = this.bar.getItems()[x].length - 1;
             ItemStack i = this.bar.getItem(x, y);
             if(i != null){
-                i.render(lxOffset + (x * 4) + dx + (x * Main.TILE_SIZE), llyOffset + dy);
+                i.render(g, lxOffset + (x * 4) + dx + (x * Main.TILE_SIZE), llyOffset + dy);
             }
             y += this.inv.getItems()[x].length + this.pinv.getItems()[x].length;
             if(x == this.slotX && y == this.slotY){

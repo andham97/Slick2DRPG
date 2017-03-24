@@ -83,7 +83,7 @@ public class GameManager {
                     String color = mapMgr.getTileProperty(id, "color");
                     String invStr = mapMgr.getObjectProperty(x, y, "inventory");
                     if(mapMgr.getTileProperty(id, "static").equals("false"))
-                        entityManager.registerDynamicEntity(EntityCreator.createEntity(type, color, invStr, x, y));
+                        entityManager.registerDynamicEntity((EntityPlayer) EntityCreator.createEntity(type, color, invStr, x, y));
                     else
                         entityManager.registerStaticEntity(EntityCreator.createEntity(type, color, invStr, x, y));
                 }
@@ -103,7 +103,7 @@ public class GameManager {
     public void render(GameContainer container, Graphics g){
         mapMgr.render();
         entityManager.render();
-        this.guiManager.render();
+        this.guiManager.render(g);
     }
 
     public static Inventory getActiveBar() {

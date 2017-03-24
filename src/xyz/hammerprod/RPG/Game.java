@@ -3,11 +3,7 @@
  */
 package xyz.hammerprod.RPG;
 
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
-import xyz.hammerprod.RPG.map.MapManager;
+import org.newdawn.slick.*;
 
 public class Game extends BasicGame {
 
@@ -29,7 +25,7 @@ public class Game extends BasicGame {
 
     @Override
     public void render(GameContainer container, Graphics graphics) throws SlickException {
-        //container.setShowFPS(false);
+        container.setShowFPS(false);
         mgr.render(container, graphics);
     }
 }

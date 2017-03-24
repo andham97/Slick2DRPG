@@ -27,6 +27,8 @@ public class Inventory {
     }
 
     public boolean addItem(ItemStack item){
+        if(item == null)
+            return false;
         for(int y = 0; y < items[0].length; y++){
             for(int x = 0; x < items.length; x++){
                 if(items[x][y] != null) {

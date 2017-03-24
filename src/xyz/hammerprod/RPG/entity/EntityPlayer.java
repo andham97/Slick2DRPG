@@ -18,7 +18,7 @@ import org.newdawn.slick.SlickException;
 import xyz.hammerprod.RPG.util.TimingState;
 import xyz.hammerprod.RPG.util.WorldPos;
 
-public class EntityPlayer extends Entity {
+public class EntityPlayer extends EntityDynamic {
 
     private TimingState teleportState;
     private TimingState guiState;
@@ -30,7 +30,7 @@ public class EntityPlayer extends Entity {
         this.pos = new WorldPos();
         this.inventory = new Inventory(9, 3);
         this.activeBar = new Inventory(9, 1);
-        this.inventory.addItem(new ItemStack(Item.GOLD, 20));
+        this.inventory.addItem(new ItemStack(Item.getItemFromString("GOLD"), 20));
         this.pos.setX(5);
         this.pos.setY(7);
         this.tState = new TimingState(320);
@@ -46,9 +46,7 @@ public class EntityPlayer extends Entity {
         catch(SlickException e){
             e.printStackTrace();
         }
-        for(int i = 0; i < 5; i++){
-            this.activeBar.addItem(new ItemStack(new ItemGold("", 0, 20, "gold.png"), 10));
-        }
+        this.activeBar.addItem(new ItemStack(Item.getItemFromString("GOLD"), 989));
         EntityPlayer.instance = this;
     }
 

@@ -7,16 +7,27 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import xyz.hammerprod.RPG.Main;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Item {
     public static String itemPath = new String("data/res/items/");
-    public static Item GOLD = new ItemGold("Gold", 0.005f, Integer.MAX_VALUE, "gold.png");
+    public static final Map<String, Item> items;
+    static {
+        final Map<String, Item> i = new HashMap<>();
+        i.put("GOLD", new ItemGold("Gold", 0.005f, 999, "gold.png"));
+        i.put("STEEL_SWORD", new ItemSteelSword("Steel sword", 3f, false, "steel_sword.png"));
+        i.put("APPLE", new ItemApple("Apple", 0.5f, 64, "apple.png"));
+        i.put("CHEESE", new ItemCheese("Cheese", 1.0f, 64, "cheese.png"));
+        i.put("FISH", new ItemFish("Fish", 1.0f, 64, "fish.png"));
+        i.put("PORK", new ItemPork("Pork", 1.0f, 64, "pork.png"));
+        i.put("CAKE", new ItemCake("Cake", 1.0f, 64, "cake.png"));
+        items = Collections.unmodifiableMap(i);
+    }
 
     public static Item getItemFromString(String name){
-        switch(name){
-            case "GOLD":
-                return Item.GOLD;
-        }
-        return null;
+        return items.get(name);
     }
 
     private String name;

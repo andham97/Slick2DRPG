@@ -51,7 +51,12 @@ public class EntityChest extends Entity {
             for(String s : ss){
                 String[] sss = s.split(":");
                 System.out.println(inventoryString);
-                this.inventory.addItem(new ItemStack(Item.getItemFromString(sss[0]), Integer.parseInt(sss[1])));
+                int amt = Integer.parseInt(sss[1]);
+                while(amt > 0) {
+                    ItemStack stack = new ItemStack(Item.getItemFromString(sss[0]), amt);
+                    amt -= stack.getItem().getMaxStackSize();
+                    this.inventory.addItem(stack);
+                }
             }
         }
     }

@@ -3,15 +3,13 @@
  */
 package xyz.hammerprod.RPG.gui;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import xyz.hammerprod.RPG.GameManager;
 import xyz.hammerprod.RPG.Main;
 import xyz.hammerprod.RPG.inventory.Inventory;
 import xyz.hammerprod.RPG.item.ItemStack;
 
+@SuppressWarnings("Duplicates")
 public class GUIInventory extends GUI {
 
     private Inventory inv;
@@ -87,12 +85,12 @@ public class GUIInventory extends GUI {
             // To inventory
             if(this.slotY < this.bar.getItems()[this.slotX].length + this.inv.getItems()[this.slotX].length - 1) {
                 ItemStack cur = this.inv.getItem(this.slotX, this.slotY);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.inv.setItem(cur, this.selectX, this.selectY);
-                    this.inv.setItem(sel, this.slotX, this.slotY);
+                    this.inv.setItem(sel, this.selectX, this.selectY);
+                    this.inv.setItem(cur, this.slotX, this.slotY);
                 }
                 else {
                     this.inv.setItem(cur, this.selectX, this.selectY);
@@ -102,12 +100,12 @@ public class GUIInventory extends GUI {
             // To active bar
             else {
                 ItemStack cur = this.bar.getItem(this.slotX, 0);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.inv.setItem(cur, this.selectX, this.selectY);
-                    this.bar.setItem(sel, this.slotX, 0);
+                    this.inv.setItem(sel, this.selectX, this.selectY);
+                    this.bar.setItem(cur, this.slotX, 0);
                 }
                 else {
                     this.inv.setItem(cur, this.selectX, this.selectY);
@@ -121,12 +119,12 @@ public class GUIInventory extends GUI {
             // To inventory
             if(this.slotY < this.bar.getItems()[this.slotX].length + this.inv.getItems()[this.slotX].length - 1) {
                 ItemStack cur = this.inv.getItem(this.slotX, this.slotY);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.bar.setItem(cur, this.selectX, 0);
-                    this.inv.setItem(sel, this.slotX, this.slotY);
+                    this.bar.setItem(sel, this.selectX, 0);
+                    this.inv.setItem(cur, this.slotX, this.slotY);
                 }
                 else {
                     this.bar.setItem(cur, this.selectX, 0);
@@ -136,12 +134,12 @@ public class GUIInventory extends GUI {
             // To active bar
             else {
                 ItemStack cur = this.bar.getItem(this.slotX, 0);
-                if(cur != null && cur == sel && cur.getItem() == sel.getItem()){
+                if(cur != null && sel != null && cur != sel && cur.getItem() == sel.getItem()){
                     cur.merge(sel);
                     if(sel.getStackSize() == 0)
                         sel = null;
-                    this.bar.setItem(sel, this.slotX, 0);
-                    this.bar.setItem(cur, this.selectX, 0);
+                    this.bar.setItem(cur, this.slotX, 0);
+                    this.bar.setItem(sel, this.selectX, 0);
                 }
                 else {
                     this.bar.setItem(sel, this.slotX, 0);
@@ -168,7 +166,7 @@ public class GUIInventory extends GUI {
     }
 
     @Override
-    public void render() {
+    public void render(Graphics g) {
         int dx = Main.WIDTH / 2;
         dx -= this.texture.getWidth() / 2;
         int dy = Main.HEIGHT / 2;
@@ -178,7 +176,7 @@ public class GUIInventory extends GUI {
             for(int y = 0; y < this.inv.getItems()[x].length; y++){
                 ItemStack i = this.inv.getItem(x, y);
                 if(i != null){
-                    i.render(xOffset + (x * 4) + dx + (x * Main.TILE_SIZE), yOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
+                    i.render(g, xOffset + (x * 4) + dx + (x * Main.TILE_SIZE), yOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
                 }
                 if(x == this.slotX && y == this.slotY){
                     this.selTex.draw(xOffset + (x * 4) + dx + (x * Main.TILE_SIZE), yOffset + (y * 3) + dy + (y * Main.TILE_SIZE));
@@ -189,7 +187,7 @@ public class GUIInventory extends GUI {
             int y = this.bar.getItems()[x].length - 1;
             ItemStack i = this.bar.getItem(x, y);
             if(i != null){
-                i.render(xOffset + (x * 4) + dx + (x * Main.TILE_SIZE), lyOffset + dy);
+                i.render(g, xOffset + (x * 4) + dx + (x * Main.TILE_SIZE), lyOffset + dy);
             }
             y += this.inv.getItems()[x].length;
             if(x == this.slotX && y == this.slotY){

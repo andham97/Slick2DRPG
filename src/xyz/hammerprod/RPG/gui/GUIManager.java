@@ -4,6 +4,7 @@
 package xyz.hammerprod.RPG.gui;
 
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import xyz.hammerprod.RPG.GameManager;
 import xyz.hammerprod.RPG.util.TimingState;
@@ -42,10 +43,10 @@ public class GUIManager {
         this.currentGUI.update(container, delta);
     }
 
-    public void render(){
+    public void render(Graphics g){
         if(!this.visible)
             return;
-        this.currentGUI.render();
+        this.currentGUI.render(g);
     }
 
     public void revoke() {

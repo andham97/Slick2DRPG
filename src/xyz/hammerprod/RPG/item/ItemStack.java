@@ -3,6 +3,13 @@
  */
 package xyz.hammerprod.RPG.item;
 
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
+import org.newdawn.slick.Graphics;
+import sun.font.TrueTypeFont;
+import xyz.hammerprod.RPG.Game;
+import xyz.hammerprod.RPG.Main;
+
 public class ItemStack {
     private Item item;
     private int stackSize;
@@ -10,6 +17,8 @@ public class ItemStack {
     public ItemStack(Item item, int ss){
         this.item = item;
         this.stackSize = ss;
+        if(this.stackSize > this.item.getMaxStackSize())
+            this.stackSize = this.item.getMaxStackSize();
     }
 
     public int getStackSize() {
@@ -59,7 +68,12 @@ public class ItemStack {
             return false;
     }
 
-    public void render(int x, int y) {
+    public void render(Graphics g, int x, int y) {
         this.item.render(x, y);
+        if(!this.item.isStackable())
+            return;
+        String draw = "" + this.getStackSize();
+        g.setColor(Color.black);
+        g.drawString(draw, x + Main.TILE_SIZE - g.getFont().getWidth(draw), y + Main.TILE_SIZE - g.getFont().getHeight(draw));
     }
 }

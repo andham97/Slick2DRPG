@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class EntityManager {
     private ArrayList<Entity> staticEntities = new ArrayList<Entity>();
-    private ArrayList<Entity> dynamicEntities = new ArrayList<Entity>();
+    private ArrayList<EntityDynamic> dynamicEntities = new ArrayList<EntityDynamic>();
     private EntityPlayer playerRef;
 
     public EntityManager(){
@@ -22,7 +22,7 @@ public class EntityManager {
         staticEntities.add(e);
     }
 
-    public void registerDynamicEntity(Entity e){
+    public void registerDynamicEntity(EntityDynamic e){
         dynamicEntities.add(e);
     }
 
