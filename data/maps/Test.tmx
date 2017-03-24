@@ -448,7 +448,7 @@
  <objectgroup width="0" height="0" name="OL">
   <object id="5" x="224" y="160" width="32" height="32">
    <properties>
-    <property name="inventory" value="GOLD:1"/>
+    <property name="inventory" value="GOLD:1; STEEL_SWORD:1; APPLE:70; CHEESE:1; FISH:1; PORK:1; CAKE:5"/>
     <property name="x" type="int" value="7"/>
     <property name="y" type="int" value="5"/>
    </properties>

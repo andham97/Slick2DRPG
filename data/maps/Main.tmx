@@ -201,6 +201,23 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="1025" name="entities1" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../res/entity/entities1.png" width="320" height="320"/>
+  <tile id="0">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="static" type="bool" value="true"/>
+    <property name="type" value="chest"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="static" type="bool" value="true"/>
+    <property name="type" value="chest"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Lower Wall" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA2NgGAWjYBRQAzQBMRMBzDxgriMMkuhgR8oA2t1EQ7MZGSDxywLESmiYlYE6aUCRBLXKVLID2R+0tAOZppUdtPYHPkCuHY5A7EQkdgZiAKeOfEfQBwAA
